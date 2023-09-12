@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .traffic-light {
+            width: 100px;
+            height: 300px;
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .light {
+            width: 80px;
+            height: 80px;
+            background-color: gray;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+
+        .red.active { background-color: red; }
+        .yellow.active { background-color: yellow; }
+        .green.active { background-color: green; }
+    </style>
+</head>
+<body>
+    <div class="traffic-light">
+        <div class="light red"></div>
+        <div class="light yellow"></div>
+        <div class="light green"></div>
+    </div>
+    <button onclick="changeLight()">Переключить свет</button>
+
+    <script>
+        const lights = document.querySelectorAll('.light');
+        let currentLightIndex = 0;
+
+        function changeLight() {
+            lights[currentLightIndex].classList.remove('active');
+            currentLightIndex = (currentLightIndex + 1) % lights.length;
+            lights[currentLightIndex].classList.add('active');
+        }
+
+        // Начнем с верхнего красного кружка
+        lights[currentLightIndex].classList.add('active');
+    </script>
+</body>
+</html>
